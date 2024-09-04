@@ -1,3 +1,5 @@
+import 'package:bookly_app/core/helpers/extensions.dart';
+import 'package:bookly_app/core/routing/routes.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
+    initAnimation();
+    navigateToScreen();
+  }
 
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+
+  void initAnimation() {
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
@@ -27,6 +39,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
     ).animate(animationController);
 
     animationController.forward();
+  }
+  void navigateToScreen(){
+    Future.delayed(
+      const Duration(seconds: 3),
+          () {
+        context.pushReplacementNamed(Routes.home);
+      },
+    );
   }
 
   @override
