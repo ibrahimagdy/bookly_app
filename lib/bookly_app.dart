@@ -1,6 +1,7 @@
 import 'package:bookly_app/core/routing/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'core/routing/routes.dart';
 import 'core/utils/constants.dart';
@@ -18,6 +19,9 @@ class BooklyApp extends StatelessWidget{
         theme: ThemeData(
           brightness: Brightness.dark,
           scaffoldBackgroundColor: kPrimaryColor,
+          textTheme: GoogleFonts.montserratTextTheme(
+            ThemeData.dark().textTheme
+          ),
         ),
         initialRoute: Routes.splash,
         onGenerateRoute: appRoutes.generateRoute,
