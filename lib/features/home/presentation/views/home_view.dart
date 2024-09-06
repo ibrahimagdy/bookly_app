@@ -5,7 +5,6 @@ import 'package:bookly_app/features/home/presentation/views/widgets/featured_boo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -15,18 +14,25 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAppBar(),
-              SizedBox(height: 23.h),
-              const FeaturedBookListView(),
-              SizedBox(height: 49.h),
-              Text(
-                'Best Seller',
-                style: TextStyles.font18SemiBold,
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomAppBar(),
+                    SizedBox(height: 23.h),
+                    const FeaturedBookListView(),
+                    SizedBox(height: 49.h),
+                    Text(
+                      'Best Seller',
+                      style: TextStyles.font18SemiBold,
+                    ),
+                    SizedBox(height: 8.h),
+                  ],
+                ),
               ),
-              SizedBox(height: 8.h),
               const BestSellerBookListView(),
             ],
           ),
