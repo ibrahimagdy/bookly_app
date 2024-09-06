@@ -1,5 +1,5 @@
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/assets.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({super.key});
@@ -12,8 +12,8 @@ class BookItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          image: DecorationImage(
-            image: NetworkImage('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/teal-and-orange-fantasy-book-cover-design-template-056106feb952bdfb7bfd16b4f9325c11.jpg?ts=1698543827'),
+          image: const DecorationImage(
+            image: NetworkImage(Assets.testImage),
             fit: BoxFit.cover
           ),
         ),
