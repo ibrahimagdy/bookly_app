@@ -1,21 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-class ReadingModes extends Equatable {
-  final bool? text;
-  final bool? image;
+class Pdf extends Equatable {
+  final bool? isAvailable;
+  final String? acsTokenLink;
 
-  const ReadingModes({this.text, this.image});
+  const Pdf({this.isAvailable, this.acsTokenLink});
 
-  factory ReadingModes.fromJson(Map<String, dynamic> json) => ReadingModes(
-    text: json['text'] as bool?,
-    image: json['image'] as bool?,
+  factory Pdf.fromJson(Map<String, dynamic> json) => Pdf(
+    isAvailable: json['isAvailable'] as bool?,
+    acsTokenLink: json['acsTokenLink'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
-    'text': text,
-    'image': image,
+    'isAvailable': isAvailable,
+    'acsTokenLink': acsTokenLink,
   };
 
   @override
-  List<Object?> get props => [text, image];
+  List<Object?> get props => [isAvailable, acsTokenLink];
 }
