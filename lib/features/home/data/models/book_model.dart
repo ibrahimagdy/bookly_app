@@ -1,5 +1,5 @@
+import 'package:bookly_app/features/home/data/models/sale_info.dart';
 import 'package:equatable/equatable.dart';
-import 'sale_info.dart';
 import 'search_info.dart';
 import 'volume_info.dart';
 import 'access_info.dart';
