@@ -1,6 +1,6 @@
+import 'package:bookly_app/features/home/data/models/panelization_summary.dart';
+import 'package:bookly_app/features/home/data/models/reading_modes.dart';
 import 'package:equatable/equatable.dart';
-import 'panelization_summary.dart';
-import 'reading_modes.dart';
 import 'image_links.dart';
 import 'industry_identifiers.dart';
 
