@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget{
               SizedBox(height: 18.h),
               Text(
                 'Search Result',
-                style: TextStyles.font16Regular,
+                style: TextStyles.font16Regular.copyWith(color: Colors.white),
               ),
               SizedBox(height: 12.h),
               const Expanded(child: SearchResultListView()),
