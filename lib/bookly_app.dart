@@ -19,6 +19,9 @@ class BooklyApp extends StatelessWidget{
         theme: ThemeData(
           brightness: Brightness.dark,
           scaffoldBackgroundColor: kPrimaryColor,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: kPrimaryColor
+          ),
           textTheme: GoogleFonts.montserratTextTheme(
             ThemeData.dark().textTheme
           ),
