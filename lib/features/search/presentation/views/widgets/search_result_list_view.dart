@@ -10,10 +10,10 @@ class SearchResultListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.h),
-          child: const BestSellerBookItem(),
-        );
+        // return Padding(
+        //   padding: EdgeInsets.symmetric(vertical: 8.h),
+        //   child: const NewestBookItem(),
+        // );
       },
     );
   }
