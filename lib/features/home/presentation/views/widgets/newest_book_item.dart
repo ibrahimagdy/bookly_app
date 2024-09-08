@@ -1,13 +1,14 @@
 import 'package:bookly_app/core/helpers/extensions.dart';
 import 'package:bookly_app/core/routing/routes.dart';
+import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 
-class BestSellerBookItem extends StatelessWidget {
-  const BestSellerBookItem({super.key});
+class NewestBookItem extends StatelessWidget {
+  final BookModel bookModel;
+  const NewestBookItem({super.key, required this.bookModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,8 @@ class BestSellerBookItem extends StatelessWidget {
             height: 113.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
-                image: NetworkImage(Assets.testImage),
+              image: DecorationImage(
+                image: NetworkImage(bookModel.volumeInfo.imageLinks!.smallThumbnail),
               ),
             ),
           ),
@@ -33,7 +34,7 @@ class BestSellerBookItem extends StatelessWidget {
                 SizedBox(
                   width: 196.w,
                   child: Text(
-                    'Harry Potter and the Goblet of Fire',
+                    bookModel.volumeInfo.title!,
                     style: TextStyles.font20Regular,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -41,18 +42,21 @@ class BestSellerBookItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3.h),
                 Text(
-                  'J.K. Rowling',
+                  bookModel.volumeInfo.authors![0],
                   style: TextStyles.font14Regular,
                 ),
                 SizedBox(height: 3.h),
                 Row(
                   children: [
                     Text(
-                      '19.99 €',
+                      'Free',
                       style: TextStyles.font20Bold,
                     ),
-                    SizedBox(width: 36.w),
-                    const BookRating(),
+                    SizedBox(width: 50.w),
+                    BookRating(
+                      rating: bookModel.volumeInfo.averageRating?.round()?? 0,
+                      count: bookModel.volumeInfo.ratingsCount?? 0,
+                    ),
                   ],
                 ),
               ],

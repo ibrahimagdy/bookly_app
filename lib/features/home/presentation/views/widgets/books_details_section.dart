@@ -30,7 +30,7 @@ class BooksDetailsSection extends StatelessWidget {
           style: TextStyles.font18Regular,
         ),
         SizedBox(height: 5.h),
-        const BookRating(),
+        const BookRating(rating: 0, count: 0,),
         SizedBox(height: 40.h),
         const BooksActionButton(),
       ],
