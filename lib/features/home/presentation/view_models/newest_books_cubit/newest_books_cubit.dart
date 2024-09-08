@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../data/models/book_model.dart';
 import '../../../data/repo/home_repo.dart';
-
 part 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {

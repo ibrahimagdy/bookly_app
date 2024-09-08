@@ -2,8 +2,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/newest_book_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BestSellerBookListView extends StatelessWidget {
-  const BestSellerBookListView({super.key});
+class NewestBookListView extends StatelessWidget {
+  const NewestBookListView({super.key});
 
   @override
   Widget build(BuildContext context) {
