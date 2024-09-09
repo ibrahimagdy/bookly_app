@@ -8,7 +8,7 @@ import 'package:bookly_app/features/search/presentation/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../di/dependecy_injection.dart';
+import '../di/dependency_injection.dart';
 
 
 abstract class AppRouter{

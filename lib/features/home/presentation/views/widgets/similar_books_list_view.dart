@@ -24,7 +24,9 @@ class SimilarBooksListView extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: BookItemImage(
-                    imageUrl: state.books[index].volumeInfo.imageLinks?.smallThumbnail?? Assets.testImage,
+                    imageUrl: state.books[index].volumeInfo.imageLinks
+                            ?.smallThumbnail ?? Assets.testImage,
+                    bookModel: state.books[index],
                   ),
                 );
               },

@@ -1,4 +1,4 @@
-import 'package:bookly_app/core/di/dependecy_injection.dart';
+import 'package:bookly_app/core/di/dependency_injection.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/data/repo/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
