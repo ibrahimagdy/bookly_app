@@ -61,7 +61,7 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     SizedBox(width: 50.w),
                     BookRating(
-                      rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
+                      rating: bookModel.volumeInfo.averageRating?? 0,
                       count: bookModel.volumeInfo.ratingsCount ?? 0,
                     ),
                   ],
