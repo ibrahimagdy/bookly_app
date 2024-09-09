@@ -30,7 +30,7 @@ class ServiceFailure extends Failures {
         if (dioError.message?.contains('SocketException') ?? false) {
           return ServiceFailure('No Internet Connection');
         }
-        return ServiceFailure('Connection error occurred');
+        return ServiceFailure('No Internet Connection');
       case DioExceptionType.unknown:
         return ServiceFailure('Unexpected Error, Please try again!');
       default:
