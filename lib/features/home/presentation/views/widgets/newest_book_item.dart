@@ -1,28 +1,35 @@
 import 'package:bookly_app/core/helpers/extensions.dart';
 import 'package:bookly_app/core/routing/routes.dart';
+import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/styles.dart';
 
 class NewestBookItem extends StatelessWidget {
   final BookModel bookModel;
+
   const NewestBookItem({super.key, required this.bookModel});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.details),
+      onTap: () => context.pushNamed(Routes.details, arguments: bookModel),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 83.w,
             height: 113.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              image: DecorationImage(
-                image: NetworkImage(bookModel.volumeInfo.imageLinks!.smallThumbnail),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: CachedNetworkImage(
+                imageUrl: bookModel.volumeInfo.imageLinks?.smallThumbnail?? Assets.testImage,
+                errorWidget: (context, url, error) => const Icon(
+                  Icons.error_outline,
+                  size: 28,
+                ),
               ),
             ),
           ),
@@ -34,7 +41,7 @@ class NewestBookItem extends StatelessWidget {
                 SizedBox(
                   width: 196.w,
                   child: Text(
-                    bookModel.volumeInfo.title!,
+                    bookModel.volumeInfo.title?? '',
                     style: TextStyles.font20Regular,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -42,7 +49,7 @@ class NewestBookItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3.h),
                 Text(
-                  bookModel.volumeInfo.authors![0],
+                  bookModel.volumeInfo.authors?[0] ?? '',
                   style: TextStyles.font14Regular,
                 ),
                 SizedBox(height: 3.h),
@@ -54,8 +61,8 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     SizedBox(width: 50.w),
                     BookRating(
-                      rating: bookModel.volumeInfo.averageRating?.round()?? 0,
-                      count: bookModel.volumeInfo.ratingsCount?? 0,
+                      rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
+                      count: bookModel.volumeInfo.ratingsCount ?? 0,
                     ),
                   ],
                 ),
@@ -67,3 +74,4 @@ class NewestBookItem extends StatelessWidget {
     );
   }
 }
+
