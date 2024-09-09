@@ -2,38 +2,40 @@ import 'package:bookly_app/core/routing/routes.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_view.dart';
+import 'package:bookly_app/features/search/data/repo/search_repo_impl.dart';
+import 'package:bookly_app/features/search/presentation/view_models/search_result_cubit/search_result_cubit.dart';
 import 'package:bookly_app/features/search/presentation/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../di/dependecy_injection.dart';
 
-class AppRoutes {
-  Route generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case Routes.splash:
-        return MaterialPageRoute(
-          builder: (context) => const SplashView(),
-        );
-      case Routes.home:
-        return MaterialPageRoute(
-          builder: (context) => const HomeView(),
-        );
-      case Routes.details:
-        final bookModel = settings.arguments as BookModel;
-        return MaterialPageRoute(
-          builder: (context) => BookDetailsView(bookModel: bookModel),
-        );
-      case Routes.search:
-        return MaterialPageRoute(
-          builder: (context) => const SearchView(),
-        );
-      default:
-        return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${settings.name}'),
-            ),
-          ),
-        );
-    }
-  }
+
+abstract class AppRouter{
+  static final router = GoRouter(
+    routes: [
+      GoRoute(
+        path: Routes.splash,
+        builder: (context, state) => const SplashView(),
+      ),
+      GoRoute(
+        path: Routes.home,
+        builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: Routes.details,
+        builder: (context, state) => BookDetailsView(
+          bookModel: state.extra as BookModel,
+        ),
+      ),
+      GoRoute(
+        path: Routes.search,
+        builder: (context, state) => BlocProvider(
+          create: (context) => SearchResultCubit(getIt.get<SearchRepoImpl>()),
+          child: const SearchView(),
+        ),
+      ),
+    ],
+  );
+
 }

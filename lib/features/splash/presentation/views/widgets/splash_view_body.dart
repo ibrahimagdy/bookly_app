@@ -1,7 +1,7 @@
-import 'package:bookly_app/core/helpers/extensions.dart';
 import 'package:bookly_app/core/routing/routes.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -40,11 +40,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     animationController.forward();
   }
-  void navigateToScreen(){
+
+  void navigateToScreen() {
     Future.delayed(
       const Duration(seconds: 3),
-          () {
-        context.pushReplacementNamed(Routes.home);
+      () {
+        GoRouter.of(context).push(Routes.home);
       },
     );
   }
