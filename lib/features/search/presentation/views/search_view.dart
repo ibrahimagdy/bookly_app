@@ -1,10 +1,15 @@
+import 'package:bookly_app/core/di/dependecy_injection.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model.dart';
+import 'package:bookly_app/features/search/data/repo/search_repo_impl.dart';
+import 'package:bookly_app/features/search/presentation/view_models/search_result_cubit/search_result_cubit.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/custom_text_field.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/search_result_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SearchView extends StatelessWidget{
+class SearchView extends StatelessWidget {
   const SearchView({super.key});
 
   @override
@@ -25,7 +30,9 @@ class SearchView extends StatelessWidget{
                 style: TextStyles.font16Regular.copyWith(color: Colors.white),
               ),
               SizedBox(height: 12.h),
-              const Expanded(child: SearchResultListView()),
+              const Expanded(
+                child: SearchResultListView(),
+              ),
             ],
           ),
         ),
