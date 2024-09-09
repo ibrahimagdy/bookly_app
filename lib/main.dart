@@ -5,9 +5,5 @@ import 'package:flutter/material.dart';
 
 void main() {
   setupGetIt();
-  runApp(
-    BooklyApp(
-      appRoutes: AppRoutes(),
-    ),
-  );
+  runApp(const BooklyApp());
 }

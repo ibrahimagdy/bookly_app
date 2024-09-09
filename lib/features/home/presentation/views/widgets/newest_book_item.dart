@@ -1,4 +1,3 @@
-import 'package:bookly_app/core/helpers/extensions.dart';
 import 'package:bookly_app/core/routing/routes.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/features/home/data/models/book_model.dart';
@@ -6,6 +5,7 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/styles.dart';
 
 class NewestBookItem extends StatelessWidget {
@@ -16,7 +16,7 @@ class NewestBookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(Routes.details, arguments: bookModel),
+      onTap: () => GoRouter.of(context).push(Routes.details,extra: bookModel),
       child: Row(
         children: [
           SizedBox(
@@ -61,7 +61,7 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     SizedBox(width: 50.w),
                     BookRating(
-                      rating: bookModel.volumeInfo.averageRating?.round() ?? 0,
+                      rating: bookModel.volumeInfo.averageRating?? 0,
                       count: bookModel.volumeInfo.ratingsCount ?? 0,
                     ),
                   ],

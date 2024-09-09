@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  final int rating;
+  final num rating;
   final int count;
   const BookRating({super.key, required this.rating, required this.count});
 
