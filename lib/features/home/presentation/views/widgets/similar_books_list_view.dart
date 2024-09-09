@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/widgets/custom_circle_progress_indicator.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/features/home/presentation/view_models/similar_books_cubit/similar_books_cubit.dart';
@@ -23,7 +24,7 @@ class SimilarBooksListView extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: BookItemImage(
-                    imageUrl: state.books[index].volumeInfo.imageLinks!.smallThumbnail,
+                    imageUrl: state.books[index].volumeInfo.imageLinks?.smallThumbnail?? Assets.testImage,
                   ),
                 );
               },
